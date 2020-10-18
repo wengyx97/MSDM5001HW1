@@ -1,0 +1,4 @@
+$ DATE=$(date +"%Y-%m-%d %H:%M:%S"); D="nanoseconds since $DATE UTC+8";for i in {1..100}
+> do
+> mkdir /home/weng/test/DDM$i;touch /home/weng/test/DDM$i/time_till_now.txt;  echo $D >> /home/weng/test/DDM$i/time_till_now.txt;  d=$(date +"%Y-%m-%d %H:%M:%S");  dd="<$d UTC+8>"; echo $dd >> /home/weng/test/DDM$i/time_till_now.txt
+> done
