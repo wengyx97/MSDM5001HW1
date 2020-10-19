@@ -1,0 +1,27 @@
+import  xml.dom.minidom
+import re
+
+
+dom = xml.dom.minidom.parse('blocklist.xml')
+root = dom.documentElement
+a = root.getElementsByTagName('emItem')
+
+
+for i in range(len(a)):
+    item = a[i]
+    ID=item.getAttribute("blockID")
+    email=item.getAttribute("id")
+    if ID[0]=='i' or ID[0]=='g':
+        s='<emItem blockID="'+str(ID)+'" id="'+str(email)+'">'
+        print(s)
+
+
+
+
+for i in range(len(a)):
+    item = a[i]
+    ID=item.getAttribute("blockID")
+    email=item.getAttribute("id")
+    if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", email) != None:
+        s='<emItem blockID="'+str(ID)+'" id="'+str(email)+'">'
+        print(s)
